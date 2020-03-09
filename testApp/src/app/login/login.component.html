@@ -1,0 +1,57 @@
+<div class="login-page">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <h1>User login</h1>
+            <form [formGroup]="angForm" role="form" (ngSubmit)="onSubmit(angForm.value)">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Sign In</h4>
+                            </div>
+                           <div class="card-form">
+                                <div class="row">
+                                    <div class="col-md-12 padding20">
+                                        <div class="alert alert-danger" *ngIf="errorMsg">
+                                            <button type="button" aria-hidden="true" class="close" (click)="alertclose()">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                            <span>Invalid Email/Password</span>
+                                        </div>
+                                        <mat-form-field appearance="legacy">
+                                            <mat-icon matSuffix>email</mat-icon>
+                                            <mat-label>Email</mat-label>
+                                            <input matInput placeholder="Placeholder"  type="email" matInput formControlName="email" >
+                                        </mat-form-field>
+                                        <ng-container *ngFor="let validation of validation_messages.email;">
+                                            <mat-error class="mat-error ng-star-inserted"  role="alert" *ngIf="angForm.get('email').hasError(validation.type) && angForm.get('email').touched">{{validation.message}}</mat-error>
+                                        </ng-container>
+                                        <mat-form-field appearance="legacy">
+                                            <mat-icon matSuffix>lock_outline</mat-icon>
+                                            <mat-label>Password</mat-label>
+                                            <input matInput placeholder="Placeholder"  type="password" matInput formControlName="password" >
+                                        </mat-form-field>
+                                        <ng-container *ngFor="let validation of validation_messages.password;">
+                                            <mat-error class="mat-error ng-star-inserted"  role="alert" *ngIf="angForm.get('password').hasError(validation.type) && angForm.get('password').touched">{{validation.message}}</mat-error>
+                                        </ng-container>
+                                        <!-- <p>Name : <input #box (keyup)="0"></p><p>{{box.value|uppercase}}</p> -->
+                                       <!-- <p><input #textbox type="text" [(ngModel)]="textValue" />
+                                        upper: '{{textbox.value.toUpperCase()}}'</p> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row action-btn">
+                                    <div class="col-md-12">
+                                        <a class="forgot float-left" (click)="forgotpass()">Forgot Password ?</a>
+                                        <button mat-flat-button color="primary" type="submit" class="float-right" [disabled]='angForm.invalid'>Login</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

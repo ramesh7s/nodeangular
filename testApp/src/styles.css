@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@font-face {
+    font-family: 'Calibri';
+    src: url('./assets/fonts/calibri/Calibri.eot');
+    src: url('./assets/fonts/calibri/Calibri.eot') format('embedded-opentype'),
+    url('./assets/fonts/calibri/Calibri.woff2') format('woff2'),
+    url('./assets/fonts/calibri/Calibri.woff') format('woff'),
+    url('./assets/fonts/calibri/Calibri.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0%; font-family: Calibri, Roboto, "Helvetica Neue", sans-serif; }

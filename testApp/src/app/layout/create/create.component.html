@@ -1,0 +1,105 @@
+<div class="container">
+  <div class="row" style="margin-top: 30px">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          Create
+        </div>
+        <div class="card-content">
+          <!-- <h4 class="card-title">Add {{response.title}}</h4> -->
+          <form (ngSubmit)='onSubmit(angForm.value)' [formGroup]='angForm' novalidate class="form" autocomplete="off">
+            <div class="row">
+              <div class="col-md-12">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Title</mat-label>
+                    <input matInput placeholder="Placeholder"  type="text" formControlName="title" >
+                </mat-form-field>
+                <ng-container *ngFor="let validation of validation_messages.title;">
+                    <mat-error class="mat-error ng-star-inserted"  role="alert" *ngIf="angForm.get('title').hasError(validation.type) && angForm.get('title').touched">{{validation.message}}</mat-error>
+                </ng-container>
+              </div>
+              <div class="col-md-12">
+                <mat-form-field appearance="legacy">
+                    <mat-label>ISBN</mat-label>
+                    <input matInput placeholder="Placeholder"  type="text" formControlName="isbn" >
+                </mat-form-field>
+                <ng-container *ngFor="let validation of validation_messages.isbn;">
+                    <mat-error class="mat-error ng-star-inserted"  role="alert" *ngIf="angForm.get('isbn').hasError(validation.type) && angForm.get('isbn').touched">{{validation.message}}</mat-error>
+                </ng-container>
+              </div>
+              <div class="col-md-12">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput id="description" formControlName="description"></textarea>
+                </mat-form-field>
+                <ng-container *ngFor="let validation of validation_messages.description;">
+                    <mat-error class="mat-error ng-star-inserted"  role="alert" *ngIf="angForm.get('description').hasError(validation.type) && angForm.get('description').touched">{{validation.message}}</mat-error>
+                </ng-container>
+              </div>
+              <div class="col-md-12">
+                  <label class="col-md-2" >Upload Image</label>
+                  <div class="col-md-10">
+                    <input type="file" ng2FileSelect [uploader]="uploader" />
+                  </div>
+                  <input type="hidden" id="book_image" formControlName="book_image">
+              </div>
+              <div class="col-md-12">
+                <h6>Upload queue</h6>
+                <p>Queue length: {{ uploader?.queue?.length }}</p>
+     
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th width="50%">Name</th>
+                        <th>Size</th>
+                        <th>Progress</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of uploader.queue">
+                        <td><strong>{{ item?.file?.name }}</strong></td>
+                        <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                        <td *ngIf="uploader.options.isHTML5">
+                            <div class="progress" style="margin-bottom: 0;">
+                                <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                            </div>
+                        </td>
+                        <td class="text-center">
+                            <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                            <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                            <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                        </td>
+                        <td nowrap>
+                            <button type="button" class="btn btn-success btn-xs" (click)="item.upload() " [disabled]="item.isReady || item.isUploading || item.isSuccess" >
+                                <span class="glyphicon glyphicon-upload"></span> Upload
+                            </button>
+                            <button type="button" class="btn btn-warning btn-xs"
+                                    (click)="item.cancel()" [disabled]="!item.isUploading">
+                                <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                            </button>
+                            <button type="button" class="btn btn-danger btn-xs"
+                                    (click)="item.remove()">
+                                <span class="glyphicon glyphicon-trash"></span> Remove
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row action-btn">
+              <div class="col-md-12">
+                <button mat-flat-button [disabled]='angForm.invalid' type="submit" class="btn btn-success">Save</button>
+                <a mat-flat-button type="button" class="btn btn-dark" [routerLink]="[routerLink]">Back</a>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

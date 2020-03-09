@@ -1,0 +1,37 @@
+Node js
+https://www.tutsmake.com/first-crud-node-express-js-mysql-example/
+https://medium.com/@bhanushali.mahesh3/creating-a-simple-website-with-node-js-express-and-ejs-view-engine-856382a4578f
+
+/** About passport and bcrypt **/
+https://jonathas.com/token-based-authentication-in-nodejs-with-passport-jwt-and-bcrypt/
+https://cubettech.com/resources/blog/passport-js-authentication-for-your-node-js-sleek-application/
+https://medium.com/@mridu.sh92/a-quick-guide-for-authentication-using-bcrypt-on-express-nodejs-1d8791bb418f
+https://codetheory.in/using-the-node-js-bcrypt-module-to-hash-and-safely-store-passwords/
+
+user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+var saltRounds = 10;
+bcrypt.hash(req.body.passwordsignup, saltRounds, function (err,   hash) {
+ db.User.create({
+   name: req.body.usernamesignup,
+   email: req.body.emailsignup,
+   password: hash
+   }).then(function(data) {
+    if (data) {
+    res.redirect('/home');
+    }
+  });
+ });
+
+Angular
+https://loiane.com/2017/08/angular-hide-navbar-login-page/
+
+Step 1: Install nodejs and npm
+Step 2: Install Express generator package globally 
+	npm install express-generator -g
+Step 3: To run our node server we will install the nodemon package globally
+	npm install nodemon -g
+Step 4: express --view=ejs mywebsite
+cd mywebsite
+npm install
+nodemon start
+

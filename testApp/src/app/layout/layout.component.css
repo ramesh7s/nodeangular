@@ -1,0 +1,56 @@
+* {
+    -webkit-transition: margin-left 0.2s ease-in-out;
+    -moz-transition: margin-left 0.2s ease-in-out;
+    -ms-transition: margin-left 0.2s ease-in-out;
+    -o-transition: margin-left 0.2s ease-in-out;
+    transition: margin-left 0.2s ease-in-out;
+}
+.container{
+  /*width: 100%;
+  margin: 0;
+  padding:0;*/
+}
+.main-container {
+    /*margin-top: 56px;
+    margin-left: 235px;*/
+    padding: 15px;
+    -ms-overflow-x: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+    overflow: hidden;
+}
+.collapsed {
+    margin-left: 60px;
+}
+@media screen and (max-width: 992px) {
+    .main-container {
+        margin-left: 0px !important;
+    }
+}
+@media print {
+    .main-container {
+        margin-top: 0px !important;
+        margin-left: 0px !important;
+    }
+}
+
+
+.mat-toolbar{
+height: 7vh;
+}
+
+div.headerToolbar {
+  overflow: inherit;
+}
+
+.mat-sidenav-container{
+min-height: 93vh !important;
+}
+
+
+
+.mat-sidenav-content{
+    font-size: 200%;
+    text-align: center;
+}
